@@ -1,4 +1,4 @@
-const masukkanTanggal = require("./formatTanggal.js")
+const masukkanTanggal = require("./minitask-1.js")
 const moment = require("moment")
 
 console.log("welcome")
