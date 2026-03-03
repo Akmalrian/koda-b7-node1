@@ -1,23 +1,19 @@
-const masukkanTanggal = require("./minitask-1.js")
-const moment = require("moment")
-
-console.log("welcome")
-const hasil = masukkanTanggal("22-11-2023")
-console.log(hasil)
-
-// 1. Impor modul readline bawaan Node.js
-const readline = require('readline');
-
-// 2. Buat antarmuka (interface) readline
+const masukkanTanggal = require('./minitask-1.js');
+const readline = require('node:readline/promises');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-// 3. Gunakan rl.question untuk meminta input
-rl.question('Masukkan Tanggal? ', (input) => {
+
+rl.question('Masukkan Tanggal = ')
+  .then((input) => {
     const hasil = masukkanTanggal(input)
-    console.log(`Output : ${hasil}!`);
-  
-  // 4. Tutup interface setelah selesai
-    rl.close();
-});
+    console.log(`Tanggal = ${hasil}!`);
+ // Mengembalikan promise baru untuk pertanyaan berikutnya
+  })
+  .catch((err) => {
+    console.error('Terjadi kesalahan:', err);
+  })
+  .finally(() => {
+    rl.close(); // Pastikan interface ditutup
+  });
